@@ -1,11 +1,14 @@
 class Kreator
   def call(env)
     request = Rack::Request.new(env)
+    @cookie = request.cookies["q"]
     case request.path
     when '/' then Rack::Response.new(render('index.html.erb'))
     when '/search'
-      @q = request.params['q']
-      Rack::Response.new(render('search.html.erb'))
+      Rack::Response.new do |response|
+        response.set_cookie("q", request.params["q"])
+        response.redirect("/")
+      end
     else Rack::Response.new("Not Found", 404)
     end
   end
