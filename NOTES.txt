@@ -4,9 +4,13 @@
 - Start rack application
   rackup
 
+- Stack rack application and include lib directory
+  rackup -Ilib
+
 - Middlewares
   Rack::ShowExceptions # capture exceptions and make pretty output
   Rack::Lint # check of format of the Rack application
   Rack::ContentLenght # set content-length header
   Rack::Chunked # handle streaming responses
   Rack::CommonLogger # log the request to standard error
+  Rack::Reloader # automatically reloads any requered files when request is made
