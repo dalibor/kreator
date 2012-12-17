@@ -1,0 +1,12 @@
+- Install latest version of rack
+  gem install rack
+
+- Start rack application
+  rackup
+
+- Middlewares
+  Rack::ShowExceptions # capture exceptions and make pretty output
+  Rack::Lint # check of format of the Rack application
+  Rack::ContentLenght # set content-length header
+  Rack::Chunked # handle streaming responses
+  Rack::CommonLogger # log the request to standard error
