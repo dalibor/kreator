@@ -11,4 +11,9 @@
 </head>
 <body>
   <p><%= Time.now %></p>
+
+  <form action="/search" method="post">
+    <input type="text" name="q">
+    <input type="submit" value="Search">
+  </form>
 </body>

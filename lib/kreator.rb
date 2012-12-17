@@ -3,6 +3,9 @@ class Kreator
     request = Rack::Request.new(env)
     case request.path
     when '/' then Rack::Response.new(render('index.html.erb'))
+    when '/search'
+      @q = request.params['q']
+      Rack::Response.new(render('search.html.erb'))
     else Rack::Response.new("Not Found", 404)
     end
   end
