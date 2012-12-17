@@ -1,6 +1,10 @@
 class Kreator
   def call(env)
-    Rack::Response.new(render('index.html.erb'))
+    request = Rack::Request.new(env)
+    case request.path
+    when '/' then Rack::Response.new(render('index.html.erb'))
+    else Rack::Response.new("Not Found", 404)
+    end
   end
 
   def render(template)
