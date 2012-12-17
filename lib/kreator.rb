@@ -1,3 +1,5 @@
+require 'erb'
+
 class Kreator
 
   def self.call(env)
