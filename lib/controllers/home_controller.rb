@@ -1,10 +1,10 @@
 class HomeController < Controller
 
   def index
-    render :text => 'Hello World!'
+    render 'index'
   end
 
   def search
-    render :text => 'search'
+    render :search
   end
 end
