@@ -13,6 +13,6 @@ describe Kreator do
   end
 
   it "displays Hello world on landing page" do
-    @request.get('/').body.should  include("You searched for")
+    @request.get('/').body.should include("You searched for")
   end
 end

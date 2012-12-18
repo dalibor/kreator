@@ -11,21 +11,29 @@ class Kreator
   end
 
   def response
-    @cookie = @request.cookies["q"]
+    @response = Rack::Response.new
+    controller_name, action_name = route(@request.path_info)
+    controller_class = load_controller_class(controller_name)
 
-    case @request.path
-    when '/' then Rack::Response.new(render('index.html.erb'))
-    when '/search'
-      Rack::Response.new do |response|
-        response.set_cookie("q", @request.params["q"])
-        response.redirect("/")
-      end
-    else Rack::Response.new("Not Found", 404)
-    end
+    # register request and response object to controller
+    controller = controller_class.new
+    controller.request = @request
+    controller.response = @response
+
+    controller.send(action_name)
+
+    @response
   end
 
-  def render(template)
-    path = File.expand_path("../views/#{template}", __FILE__)
-    ERB.new(File.read(path)).result(binding)
+  private
+  def route(url)
+    _trash, controller_name, action_name = url.split("/")
+    [controller_name || "home", action_name || "index"] # defaults to home/index
+  end
+
+  def load_controller_class(name)
+    require "controllers/#{name}_controller"    # home_controller
+    class_name = name.capitalize + "Controller" # HomeController
+    Object.const_get(class_name)
   end
 end
