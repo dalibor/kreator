@@ -10,6 +10,15 @@
 - Seed database
   bundle exec rake db:seed
 
+- Start an IRB session in the context of the current bundle
+  bundle console
+
+- Ruby zip
+  columns = [:id, :name]
+  values = [1, 'Mille']
+  columns.zip(values)       # => [[:id, 1], [:name, "Mille"]]
+  Hash[columns.zip(values)] # => {:id=>1, :name=>"Mille"}
+
 - Middlewares
   Rack::ShowExceptions # capture exceptions and make pretty output
   Rack::Lint # check of format of the Rack application

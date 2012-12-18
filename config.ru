@@ -8,6 +8,9 @@ $:.unshift(path) if File.directory?(path) && !$:.include?(path)
 
 require 'kreator'
 require 'controller'
+require 'model'
+
+require 'models/user'
 
 use Rack::Reloader, 0
 

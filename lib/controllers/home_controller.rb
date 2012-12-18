@@ -1,10 +1,7 @@
 class HomeController < Controller
 
   def index
+    @users = User.all
     render 'index'
-  end
-
-  def search
-    render :search
   end
 end
