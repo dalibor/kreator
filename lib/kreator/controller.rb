@@ -1,3 +1,5 @@
+require 'erb'
+
 class Controller
   attr_accessor :request, :response
 
@@ -19,7 +21,7 @@ class Controller
   end
 
   def template_path(template)
-    File.expand_path("../views/#{controller_name}/#{template}.html.erb", __FILE__)
+    File.expand_path("app/views/#{controller_name}/#{template}.html.erb", KREATOR_ROOT)
   end
 
   def controller_name

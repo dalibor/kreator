@@ -1,7 +1,4 @@
-require 'rubygems'
-require 'rack'
-require 'rspec'
-require File.expand_path("../../lib/kreator", __FILE__)
+require File.expand_path('../../config/application', __FILE__)
 
 describe Kreator do
   before do
@@ -13,6 +10,6 @@ describe Kreator do
   end
 
   it "displays Hello world on landing page" do
-    @request.get('/').body.should include("You searched for")
+    @request.get('/').body.should include("Name")
   end
 end
