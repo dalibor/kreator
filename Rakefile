@@ -12,4 +12,8 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
+task "db:seed", "Setup database" do
+  load File.expand_path('../db/seed.rb', __FILE__)
+end
+
 task :default => "test"

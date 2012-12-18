@@ -7,6 +7,9 @@
 - Stack rack application and include lib directory
   rackup -Ilib
 
+- Seed database
+  bundle exec rake db:seed
+
 - Middlewares
   Rack::ShowExceptions # capture exceptions and make pretty output
   Rack::Lint # check of format of the Rack application
